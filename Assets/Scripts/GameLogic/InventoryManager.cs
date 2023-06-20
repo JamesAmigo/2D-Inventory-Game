@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager instance;
+    private static InventoryManager _instance;
+    public static InventoryManager instance { get { return _instance; } }
 
     [SerializeField]
     private GameObject inventoryItemPrefab;
@@ -15,14 +16,13 @@ public class InventoryManager : MonoBehaviour
     
     private void Awake()
     {
-        if(instance == null)
+        if(_instance != null && _instance != this)
         {
-            instance = this;
+            Destroy(this);
         }
         else
         {
-            Debug.LogError("InventoryManager already exists");
-            Destroy(this);
+            _instance = this;
         }
     }
     public void Add(ItemsData itemData)
