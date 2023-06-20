@@ -9,6 +9,8 @@ public class TreasureSpawn : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private GameObject spawnedItems;
     [SerializeField]
     private GameObject itemPrefab;
+    [SerializeField]
+    private List<ItemsData> itemsData;
     private Animator treasureAnim;
 
 
@@ -35,10 +37,34 @@ public class TreasureSpawn : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public void ReleaseTreasure()
     {
         treasureAnim.SetTrigger("Release");
-        spawnedItems = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
+        foreach(ItemsData I in RandomItems())
+        {
+            InstantiateItem(itemPrefab, I);
+        }
+        
+    }
+    public List<ItemsData> RandomItems()
+    {
+        List<ItemsData> resultItems = new List<ItemsData>();
+        foreach(ItemsData I in itemsData)
+        {
+            float random = Random.Range(0f, 1f);
+            if(random <= I.dropChance)
+            {
+                resultItems.Add(I);
+            }
+        }
+        return resultItems;
+    }
+
+    public void InstantiateItem(GameObject item, ItemsData data)
+    {
+        GameObject spawned = Instantiate(item, Vector3.zero, Quaternion.identity);
+        spawned.GetComponent<SpawnedItem>().InitializeData(data);
         Vector2 randomForce = new Vector2(Random.Range(-200, 200), Random.Range(300, 500));
         float randomTorque = Random.Range(-100, 100);
-        spawnedItems.GetComponent<Rigidbody2D>().AddForce(randomForce);
-        spawnedItems.GetComponent<Rigidbody2D>().AddTorque(randomTorque);
+        spawned.transform.SetParent(spawnedItems.transform);
+        spawned.GetComponent<Rigidbody2D>().AddForce(randomForce);
+        spawned.GetComponent<Rigidbody2D>().AddTorque(randomTorque);
     }
 }
