@@ -8,9 +8,7 @@ public class InventoryManager : MonoBehaviour
     private static InventoryManager _instance;
     public static InventoryManager instance { get { return _instance; } }
 
-    [SerializeField]
-    private GameObject inventoryItemPrefab;
-    private Dictionary<ItemsData, InventoryItem> inventoryItems = new Dictionary<ItemsData, InventoryItem>();
+    private Dictionary<ItemsData, InventoryItem> inventoryItemsDict = new Dictionary<ItemsData, InventoryItem>();
 
     private int money;
 
@@ -28,14 +26,14 @@ public class InventoryManager : MonoBehaviour
     }
     public void Add(ItemsData itemData)
     {
-        if(inventoryItems.TryGetValue(itemData, out InventoryItem item))
+        if(inventoryItemsDict.TryGetValue(itemData, out InventoryItem item))
         {
             item.gameObject.SetActive(true);
             item.AddItem();
         }
         else
         {
-            inventoryItems.Add(itemData, UIManager.instance.FindItemIcon(itemData));
+            inventoryItemsDict.Add(itemData, UIManager.instance.FindItemIcon(itemData));
         }
     }
 

@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0$
+  m_text: $0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3330d1173b2952d4bbf7ff6ec1eeb51c, type: 2}
   m_sharedMaterial: {fileID: 6549096273633657729, guid: 3330d1173b2952d4bbf7ff6ec1eeb51c, type: 2}
@@ -2663,7 +2663,7 @@ GameObject:
   - component: {fileID: 1186073594}
   - component: {fileID: 1186073593}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MoneyAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4975,7 +4975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0$
+  m_text: $0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3330d1173b2952d4bbf7ff6ec1eeb51c, type: 2}
   m_sharedMaterial: {fileID: 6549096273633657729, guid: 3330d1173b2952d4bbf7ff6ec1eeb51c, type: 2}

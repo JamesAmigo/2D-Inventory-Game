@@ -19,7 +19,7 @@ public class SellDialog : MonoBehaviour
     private TextMeshProUGUI sellPriceText;
     private void OnEnable() {
         itemNameText.text = "Sell " + item.itemData.itemName + "?";        
-        sellPriceText.text = (item.itemData.itemValue * sellAmount).ToString() + "$";
+        sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void SetItem(InventoryItem item)
     {
@@ -33,19 +33,19 @@ public class SellDialog : MonoBehaviour
         }
         sellAmount += amount;
         itemAmountText.text = sellAmount.ToString();
-        sellPriceText.text = (item.itemData.itemValue * sellAmount).ToString() + "$";
+        sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void SetMin()
     {
         sellAmount = 1;
         itemAmountText.text = sellAmount.ToString();
-        sellPriceText.text = (item.itemData.itemValue * sellAmount).ToString() + "$";
+        sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void SetMax()
     {
         sellAmount = item.stackCount;
         itemAmountText.text = sellAmount.ToString();
-        sellPriceText.text = (item.itemData.itemValue * sellAmount).ToString() + "$";
+        sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void Sell()
     {
