@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MeatData
   m_EditorClassIdentifier: 
   itemName: Meat
-  itemSprite: {fileID: 21300000, guid: eab87f10d2afa594c92ed3d29451b618, type: 3}
-  itemValue: 15
+  itemSprite: {fileID: 21300000, guid: 528a171966a5bd649905f8e1bca8e315, type: 3}
+  itemValue: 45
   dropChance: 0.5

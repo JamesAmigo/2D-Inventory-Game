@@ -8,7 +8,7 @@ public class InventoryItem : MonoBehaviour
 {
 
     public ItemsData itemData;
-    private int stackCount;
+    public int stackCount;
 
     [SerializeField]
     private TMP_Text nameText;  
@@ -17,11 +17,11 @@ public class InventoryItem : MonoBehaviour
     private Image itemImage;  
 
     [SerializeField]
-    private TMP_Text stackCountText;  
-    public InventoryItem(ItemsData itemData)
+    private TMP_Text stackCountText;
+
+    private void Start() 
     {
-        this.itemData = itemData;
-        AddItem();
+        InitializeData(itemData);
     }
 
     public void InitializeData(ItemsData data)
@@ -40,10 +40,20 @@ public class InventoryItem : MonoBehaviour
         stackCountText.text = stackCount.ToString();
     }
 
-    public void RemoveItem()
+    public void RemoveItem(int count)
     {
-        stackCount--;
+        stackCount -= count;
         stackCountText.text = stackCount.ToString();
+        InventoryManager.instance.MoneyChange(itemData.itemValue * count);
+        if(stackCount <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void StartSell()
+    {
+        UIManager.instance.OpenSellDialog(this);
     }
 
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DiamondData
   m_EditorClassIdentifier: 
   itemName: Diamond
-  itemSprite: {fileID: 21300000, guid: 6b3b8ef492edc304f9230dc368e8af5c, type: 3}
-  itemValue: 100
+  itemSprite: {fileID: 21300000, guid: 2fcb5265632b8f34396f9665856b9f97, type: 3}
+  itemValue: 200
   dropChance: 0.2

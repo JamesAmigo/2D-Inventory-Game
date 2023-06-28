@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    
     private static InventoryManager _instance;
     public static InventoryManager instance { get { return _instance; } }
 
     [SerializeField]
     private GameObject inventoryItemPrefab;
-    public Dictionary<ItemsData, InventoryItem> inventoryItems = new Dictionary<ItemsData, InventoryItem>();
-    [SerializeField]
-    private GameObject inventoryItemsIcons;
+    private Dictionary<ItemsData, InventoryItem> inventoryItems = new Dictionary<ItemsData, InventoryItem>();
+
+    private int money;
 
     
     private void Awake()
@@ -29,15 +30,18 @@ public class InventoryManager : MonoBehaviour
     {
         if(inventoryItems.TryGetValue(itemData, out InventoryItem item))
         {
+            item.gameObject.SetActive(true);
             item.AddItem();
         }
         else
         {
-            GameObject newItem = Instantiate(inventoryItemPrefab, inventoryItemsIcons.transform);
-            newItem.GetComponent<InventoryItem>().InitializeData(itemData);
-            newItem.transform.SetParent(inventoryItemsIcons.transform);
-
-            inventoryItems.Add(itemData, newItem.GetComponent<InventoryItem>());
+            inventoryItems.Add(itemData, UIManager.instance.FindItemIcon(itemData));
         }
+    }
+
+    public void MoneyChange(int amount)
+    {
+        money += amount;
+        UIManager.instance.UpdateMoneyText(money);
     }
 }

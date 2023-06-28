@@ -257,7 +257,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7488238514244629272}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2590943916239160579}
+        m_TargetAssemblyTypeName: InventoryItem, Assembly-CSharp
+        m_MethodName: StartSell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7488238514244629274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,8 +489,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a28960bf12ee0ef439f0a3de86162ef9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -500,6 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
+  stackCount: 0
   nameText: {fileID: 7488238514393887502}
   itemImage: {fileID: 7488238515025463950}
   stackCountText: {fileID: 7488238513904863907}
@@ -569,7 +582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f30c689e1cd8caa45a28c4947f382374, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0280d567a8525874fabe9145d6e3a88b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -646,7 +659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 763fa2929192959438097de53e2a0423, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 903e9091d513a22479416f94418de84b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

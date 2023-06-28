@@ -57,13 +57,13 @@ public class TreasureSpawn : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         return resultItems;
     }
 
-    public void InstantiateItem(GameObject item, ItemsData data)
+    public void InstantiateItem(GameObject itemPrefab, ItemsData data)
     {
-        GameObject spawned = Instantiate(item, Vector3.zero, Quaternion.identity);
+        GameObject spawned = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
         spawned.GetComponent<SpawnedItem>().InitializeData(data);
-        Vector2 randomForce = new Vector2(Random.Range(-200, 200), Random.Range(300, 500));
-        float randomTorque = Random.Range(-100, 100);
         spawned.transform.SetParent(spawnedItems.transform);
+        Vector2 randomForce = new Vector2(Random.Range(-200, 200), Random.Range(500, 700));
+        float randomTorque = Random.Range(-100, 100);
         spawned.GetComponent<Rigidbody2D>().AddForce(randomForce);
         spawned.GetComponent<Rigidbody2D>().AddTorque(randomTorque);
     }
