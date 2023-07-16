@@ -19,7 +19,7 @@ public class InventoryItem : MonoBehaviour
     [SerializeField]
     private TMP_Text stackCountText;
 
-    private void Start() 
+    private void Awake() 
     {
         InitializeData(itemData);
     }
@@ -30,7 +30,6 @@ public class InventoryItem : MonoBehaviour
         this.name = data.itemName;
         itemImage.sprite = data.itemSprite;
         nameText.text = data.itemName;
-        stackCount++;
         stackCountText.text = stackCount.ToString();
     }
 
@@ -53,6 +52,7 @@ public class InventoryItem : MonoBehaviour
 
     public void StartSell()
     {
+        SoundManager2D.instance.PlaySFX("Click");
         UIManager.instance.OpenSellDialog(this);
     }
 

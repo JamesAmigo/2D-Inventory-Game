@@ -27,33 +27,56 @@ public class SellDialog : MonoBehaviour
     }
     public void ChangeAmount(int amount)
     {
-        if(sellAmount <= 1 || sellAmount >= item.stackCount)
+        switch(amount)
         {
-            return;
+            case -1:
+                SoundManager2D.instance.PlaySFX("Minus");
+                if(sellAmount <= 1)
+                {
+                    return;
+                }
+                break;
+            case 1:
+                SoundManager2D.instance.PlaySFX("Add");
+                if(sellAmount >= item.stackCount)
+                {
+                    return;
+                }
+                break;
+            default:
+                break;
         }
+        
         sellAmount += amount;
         itemAmountText.text = sellAmount.ToString();
         sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void SetMin()
     {
+        SoundManager2D.instance.PlaySFX("Minus");
         sellAmount = 1;
         itemAmountText.text = sellAmount.ToString();
         sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void SetMax()
     {
+        SoundManager2D.instance.PlaySFX("Add");
         sellAmount = item.stackCount;
         itemAmountText.text = sellAmount.ToString();
         sellPriceText.text = "$" + (item.itemData.itemValue * sellAmount).ToString();
     }
     public void Sell()
     {
+        SoundManager2D.instance.PlaySFX("Sold");
         item.RemoveItem(sellAmount);
-        Cancel();
+        sellAmount = 1;
+        itemAmountText.text = sellAmount.ToString();
+        item = null;
+        gameObject.SetActive(false);
     }
     public void Cancel()
     {        
+        SoundManager2D.instance.PlaySFX("Back");
         sellAmount = 1;
         itemAmountText.text = sellAmount.ToString();
         item = null;

@@ -36,6 +36,7 @@ public class TreasureSpawn : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void ReleaseTreasure()
     {
+        SoundManager2D.instance.PlaySFX("TreasureSpawn");
         treasureAnim.SetTrigger("Release");
         foreach(ItemsData I in RandomItems())
         {
