@@ -20,11 +20,30 @@ public class SingletonBase<T>: MonoBehaviour where T : MonoBehaviour
         //This is a getter for the instance. It will return the _instance
         get
         {  
-            return _instance;
+            return GetInstance();
         }
     }
     //The reason we create a private and a public is to prevent other scripts from changing the value of the instance.
 
+
+    public static T GetInstance()
+    {
+        T TinScene = FindObjectOfType<T>();
+
+        if (TinScene != null)
+            _instance = TinScene;
+        if (_instance == null)
+        {
+            GameObject temp = new GameObject();
+            temp.name = typeof(T).ToString();
+            _instance = temp.AddComponent<T>();
+        }
+
+        return _instance;
+    }
+
+
+    
 
     //This is a virtual method that will be called when the singleton object is created.
     //The reason we make it virtual is so that we can override it in the classes that inherit from this class.
